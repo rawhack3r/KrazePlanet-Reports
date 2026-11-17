@@ -1,0 +1,70 @@
+## Title
+
+Reflected XSS to Account Takeover
+
+**Affected URL:** https://tracking.pwnedbox.site
+
+**Vulnerability Type:** Reflected Cross-Site Scripting (XSS)
+
+**Severity:** Critical
+
+## Description
+A Reflected Cross-Site Scripting (XSS) vulnerability was identified in the application. User-supplied input is reflected in the HTTP response without proper sanitization or output encoding, allowing JavaScript execution in the victim's browser.
+
+
+## Steps to Reproduce
+
+1. Visit the Affected URL :- https://tracking.pwnedbox.site/?search=%3C%2Fscript%3E%22%3EKaran%3C%3E%22%271%3C%21--%3E%3CSvg%2FOnLoad%3D%28confirm%29%281%29--%3E
+
+2. Observe that JavaScript executes in the browser.
+
+**Affected Parameter:** https://tracking.pwnedbox.site/?search=
+
+XSS payload used in the vulnerable parameter:
+
+   ```html
+       </script>">Karan<>"'1<!--><Svg/OnLoad=(confirm)(1)-->
+   ```
+
+
+## Proof of Concept (POC)
+
+### Screenshot
+
+
+<img width="1917" height="575" alt="Screenshot 2026-11-17 075344" src="https://github.com/user-attachments/assets/1b7d452a-19f0-4bad-a423-6b646eece5d4" />
+<img width="1917" height="550" alt="Screenshot 2026-11-17 075339" src="https://github.com/user-attachments/assets/f9b6e7a0-833e-441c-aa31-a5e92e011749" />
+
+
+
+### Video Demonstration
+
+
+**Video Link:** [https://drive.google.com/file/d/1XaS6FI49KOirRBbldGC0-cyqmvk_hFSS/view?usp=sharing]
+
+
+## Impact
+
+- **Account Takeover:** Stealing session cookies through `document.cookie` , potentially allowing attackers to hijack user accounts, and can lead to Account Takeover.
+- **Sensitive Data Theft:** Accessing personal information, API responses, and other sensitive data available to the victim's browser by using payloads.
+- **Credential Theft:** Injecting fake login forms to capture users' login credentials.
+
+
+
+## Remediation
+
+- Context-Aware Output Encoding: Properly encode user-controlled input before rendering it in HTML, attributes, JavaScript, or other contexts.
+- HTML Sanitization: Use a maintained HTML sanitization library, such as DOMPurify, when user-submitted HTML is required.
+- Session Cookie Protection: Configure session cookies with HttpOnly, Secure, and appropriate SameSite attributes to reduce session-related risks.
+- Web Application Firewall (WAF): If available, deploy or configure a WAF with appropriate XSS detection and filtering rules to help detect and block common malicious payloads.
+
+
+### References
+
+These are useful technical references for understanding and documenting XSS impact:
+
+1. [PortSwigger – Cross-Site Scripting and Impact](https://portswigger.net/web-security/cross-site-scripting)
+2. [PortSwigger – Exploiting XSS Vulnerabilities](https://portswigger.net/web-security/cross-site-scripting/exploiting)
+3. [OWASP – Session Management Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html)
+4. [OWASP – XSS Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html)
+5. [Microsoft – Weaponizing Cross-Site Scripting](https://www.microsoft.com/en-us/msrc/blog/2025/11/weaponizing-cross-site-scripting-when-one-bug-isnt-enough)
