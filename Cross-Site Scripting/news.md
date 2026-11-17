@@ -1,41 +1,43 @@
 ## Title
 
-Reflected XSS to account Takeover
-
-## Description
+Reflected XSS to Account Takeover
 
 **Affected URL:** https://news.pwnedbox.site
 
 **Vulnerability Type:** Reflected Cross-Site Scripting (XSS)
 
-**Parameter:** https://news.pwnedbox.site/?title=
-
 **Severity:** Critical
 
-**Description:**
-
+## Description
 A Reflected Cross-Site Scripting (XSS) vulnerability was identified in the application. User-supplied input is reflected in the HTTP response without proper sanitization or output encoding, allowing JavaScript execution in the victim's browser.
+
 
 ## Steps to Reproduce
 
-1. Visit the affected URL :- https://news.pwnedbox.site/?title=%22%3E1--%3E%3C/Title/%3C/Style/%3C/Textarea/%3C/Iframe/%3E%3CImg/Src/OnError=(confirm)(1)//
-2. Navigate to the vulnerable functionality.
-3. Insert the following XSS payload into the vulnerable parameter:
+1. Visit the Affected URL :- https://news.pwnedbox.site/?title=%22%3E1--%3E%3C/Title/%3C/Style/%3C/Textarea/%3C/Iframe/%3E%3CImg/Src/OnError=(confirm)(1)//
+
+2. Visit the affected.
+
+3. Observe that JavaScript executes in the browser.
+
+**Affected Parameter:** https://news.pwnedbox.site/?title=
+
+XSS payload used in the vulnerable parameter:
 
    ```html
    ">1--></Title/</Style/</Textarea/</Iframe/><Img/Src/OnError=(confirm)(1)//
    ```
 
-4. Submit the input.
-5. Observe that JavaScript executes in the browser.
 
 ## Proof of Concept (POC)
 
 ### Screenshot
 
 
-<img width="1917" height="507" alt="Screenshot 2026-11-17 053400" src="https://github.com/user-attachments/assets/e7d901c2-ac3d-4301-adde-f6c9c622d66d" />
-<img width="1917" height="842" alt="Screenshot 2026-11-17 053348" src="https://github.com/user-attachments/assets/d114a9d6-aa34-40e6-9ebb-46e8c7d92ab1" />
+<img width="1917" height="507" alt="Screenshot 2026-11-17 053400" src="https://github.com/user-attachments/assets/87ae909a-d5b0-466e-aac2-69bb84b29570" />
+<img width="1917" height="842" alt="Screenshot 2026-11-17 053348" src="https://github.com/user-attachments/assets/5676dbe5-0a62-4289-9066-e426bef88bcf" />
+
+
 
 
 ### Video Demonstration
@@ -46,11 +48,19 @@ A Reflected Cross-Site Scripting (XSS) vulnerability was identified in the appli
 
 ## Impact
 
-Depending on the application's functionality, this vulnerability could lead to:
-
 - **Account Takeover:** Stealing session cookies through `document.cookie` , potentially allowing attackers to hijack user accounts, and can lead to Account Takeover.
 - **Sensitive Data Theft:** Accessing personal information, API responses, and other sensitive data available to the victim's browser by using payloads.
 - **Credential Theft:** Injecting fake login forms to capture users' login credentials.
+
+
+
+## Remediation
+
+- Context-Aware Output Encoding: Properly encode user-controlled input before rendering it in HTML, attributes, JavaScript, or other contexts.
+- HTML Sanitization: Use a maintained HTML sanitization library, such as DOMPurify, when user-submitted HTML is required.
+- Session Cookie Protection: Configure session cookies with HttpOnly, Secure, and appropriate SameSite attributes to reduce session-related risks.
+- Web Application Firewall (WAF): If available, deploy or configure a WAF with appropriate XSS detection and filtering rules to help detect and block common malicious payloads.
+
 
 ### References
 
@@ -61,17 +71,3 @@ These are useful technical references for understanding and documenting XSS impa
 3. [OWASP – Session Management Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html)
 4. [OWASP – XSS Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html)
 5. [Microsoft – Weaponizing Cross-Site Scripting](https://www.microsoft.com/en-us/msrc/blog/2025/11/weaponizing-cross-site-scripting-when-one-bug-isnt-enough)
-
-
-## Remediation
-
-- For HTML text and quoted attribute contexts, use appropriate encoding to prevent special characters from being interpreted as HTML syntax.
-- Properly encode user-controlled output based on its HTML context.
-- Sanitize untrusted input where appropriate.
-- Avoid unsafe DOM manipulation methods such as `innerHTML`.
-- Implement a restrictive Content Security Policy (CSP) as an additional security layer.
-
-## References
-
-- https://owasp.org/www-community/attacks/xss/
-- https://portswigger.net/web-security/cross-site-scripting
