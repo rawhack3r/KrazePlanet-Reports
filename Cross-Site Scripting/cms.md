@@ -1,5 +1,4 @@
 ##Title
-
 Stored XSS to Admin Dashboard Takeover and Mass Account Take Over
 
 **Severity:** Critical  
