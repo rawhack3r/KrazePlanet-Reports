@@ -1,5 +1,4 @@
-##Title
-Stored XSS to Admin Dashboard Takeover and Mass Account Take Over
+## Stored XSS Leading to Admin Account Takeover and Potential Mass Account Takeover
 
 **Severity:** Critical  
 **Affected Asset:** `https://target.com`  
