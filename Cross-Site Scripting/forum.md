@@ -2,8 +2,6 @@
 
 **Severity:** Critical  
 **Affected Asset:** `https://forum.pwnedbox.site/`  
-**Affected Endpoint:** `my_article`  
-**Affected Parameter:** `post_id`
 
 ## 1. Vulnerability Description
 
@@ -37,14 +35,11 @@ https://forum.pwnedbox.site/
 **1. Screenshots:**  
 <img width="1916" height="872" alt="Screenshot 2026-11-23 075550" src="https://github.com/user-attachments/assets/3c400cd2-4c97-4acd-99b0-7242ffbb176e" />
 <img width="1897" height="490" alt="Screenshot 2026-11-23 075523" src="https://github.com/user-attachments/assets/d5cbf6f8-2711-44c4-994a-2686a75c234c" />
-<img width="1917" height="912" alt="Screenshot 2026-11-23 075517" src="https://github.com/user-attachments/assets/3dc8e659-dc4c-4731-8722-5990cb5ee068" />
 
 
 
 **2. Video PoC:**  [https://drive.google.com/file/d/1n38vVkmTRjn7rxRs24OyhUbuvu_coHSb/view?usp=sharing]
 
-**3. HTML PoC (`index.html`) – Hosted on BXSS Server:**  
-[Insert HTML PoC Link]
 
 
 The attached evidence demonstrates successful JavaScript execution, persistence of the injected payload, and the potential security impact of the vulnerability.
