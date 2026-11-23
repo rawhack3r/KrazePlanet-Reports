@@ -33,10 +33,8 @@ https://community.pwnedbox.site/index.php?active_post=4#articles
 
 **1. Screenshots:**  
 
-<img width="1917" height="462" alt="Screenshot 2026-11-23 080828" src="https://github.com/user-attachments/assets/f7450ad3-694c-4a20-8c44-03d010711271" />
-<img width="1871" height="1026" alt="Screenshot 2026-11-23 080520" src="https://github.com/user-attachments/assets/770445dc-cb74-46de-bac7-f297530b8dda" />
-<img width="1917" height="642" alt="Screenshot 2026-11-23 080326" src="https://github.com/user-attachments/assets/d673b35d-b41b-427c-a792-3fff7b0aced9" />
-
+<img width="1917" height="830" alt="Screenshot 2026-11-23 081344" src="https://github.com/user-attachments/assets/1cecb3c2-a630-4757-a375-d454f43b475c" />
+<img width="1911" height="607" alt="Screenshot 2026-11-23 081328" src="https://github.com/user-attachments/assets/386319e5-06bc-49ae-9fc6-3a9a1bd9d111" />
 
 
 **2. Video PoC:**  https://drive.google.com/file/d/11lj2aX8TB1OjaAe3JBDfZ5rVd6UAUA0d/view?usp=sharing
