@@ -1,9 +1,7 @@
 ## Stored XSS Leading to Admin Account Takeover and Potential Mass Account Takeover
 
 **Severity:** Critical  
-**Affected Asset:** `https://target.com`  
-**Affected Endpoint:** `/vulnerable/endpoint`  
-**Affected Parameter:** `post_id`
+**Affected Asset:** `https://cms.pwnedbox.site/` 
 
 ## 1. Vulnerability Description
 
@@ -16,33 +14,31 @@ Unlike Reflected XSS, this vulnerability does not require the victim to click a 
 1. Navigate to the affected application url.
 
 ```html
-url..
+https://cms.pwnedbox.site/
 ```
 2. Locate the functionality that accepts user-controlled input.
 3. Submit the following proof-of-concept payload:
 
 ```html
-<script>alert(document.domain)</script>
+"><img src=x onerror=alert(7)>
 ```
 
 4. Save or submit the input.
 5. Navigate to the affected page or reload the stored content.
 6. Observe that JavaScript executes in the browser.
 
-**Affected Parameter:** `post_id`
 
 ## 3. Proof of Concept (PoC) & Evidence
 
 
 **1. Screenshots:**  
-[Insert Screenshot Link(s)]
+
+<img width="1901" height="738" alt="Screenshot 2026-11-23 074721" src="https://github.com/user-attachments/assets/10480d01-47e9-46b8-82b3-a5a807766a47" />
+<img width="1906" height="553" alt="Screenshot 2026-11-23 074543" src="https://github.com/user-attachments/assets/5b94ef36-a846-4cfd-962a-e1353bcf2690" />
 
 
 **2. Video PoC:**  
-[Insert Video Link]
-
-**3. HTML PoC (`index.html`) – Hosted on BXSS Server:**  
-[Insert HTML PoC Link]
+[https://drive.google.com/file/d/1ImGDj_joBZuUBbwkyvblQO8wjE1APu-r/view?usp=sharing]
 
 
 The attached evidence demonstrates successful JavaScript execution, persistence of the injected payload, and the potential security impact of the vulnerability.
